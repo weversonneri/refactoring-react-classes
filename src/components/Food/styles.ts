@@ -42,9 +42,12 @@ export const Container = styled.div`
 			color: #3d3d4d;
 
 			margin-top: 16px;
-			white-space: nowrap;
 			text-overflow: ellipsis;
 			overflow: hidden;
+			display: -webkit-box;
+			-webkit-line-clamp: 3; /* number of lines to show */
+			line-clamp: 3;
+			-webkit-box-orient: vertical;
 		}
 
 		.price {
