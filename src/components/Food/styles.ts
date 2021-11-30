@@ -6,6 +6,7 @@ type Props = Pick<Food, 'available'>;
 export const Container = styled.div`
 	background: #f0f0f5;
 	border-radius: 8px;
+	max-width: 352px;
 
 	header {
 		background: #ffb84d;
@@ -24,11 +25,14 @@ export const Container = styled.div`
 		img {
 			pointer-events: none;
 			user-select: none;
+			width: 100%;
+			height: 100%;
 		}
 	}
 
 	section.body {
 		padding: 30px;
+		height: 236px;
 
 		h2 {
 			color: #3d3d4d;
@@ -38,6 +42,9 @@ export const Container = styled.div`
 			color: #3d3d4d;
 
 			margin-top: 16px;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
 		}
 
 		.price {

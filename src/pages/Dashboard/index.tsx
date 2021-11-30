@@ -16,6 +16,8 @@ export interface Food {
 	image: string;
 }
 
+export type NewFood = Omit<Food, 'available' | 'id'>;
+
 function Dashboard() {
 	const [foods, setFoods] = useState<Food[]>([]);
 	const [modalOpen, setModalOpen] = useState(false);
@@ -30,7 +32,7 @@ function Dashboard() {
 		getData();
 	}, []);
 
-	async function handleAddFood(food: Food) {
+	async function handleAddFood(food: NewFood) {
 		try {
 			const response = await api.post('/foods', {
 				...food,
@@ -43,7 +45,7 @@ function Dashboard() {
 		}
 	}
 
-	const handleUpdateFood = async (food: Food) => {
+	const handleUpdateFood = async (food: NewFood) => {
 		try {
 			const foodUpdated = await api.put(`/foods/${editingFood.id}`, {
 				...editingFood,
@@ -76,7 +78,7 @@ function Dashboard() {
 		setEditModalOpen(!editModalOpen);
 	};
 
-	const handleEditFood = (food: any) => {
+	const handleEditFood = (food: Food) => {
 		setEditingFood(food);
 		setEditModalOpen(true);
 	};
